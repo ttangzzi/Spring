@@ -2,8 +2,16 @@ package com.example.demo.member;
 
 public class MemberServiceImpl implements MemberService{
 
-    // 구현체 선택 : MemoryMemberRepository
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+    // MemoryMemberRepository를 제거 후 생성자를 만든다.
+    private final MemberRepository memberRepository;
+
+    // 생성자를 통해서 memberRepository 구현체가 뭐가 들어갈지 선택하도록 한다.
+    // 이렇게하면 DIP 원칙을 지킬 수 있다. 구체적인 것에 대해선 MemberServiceImpl은 모르기 때문이다.
+    // 구체적인 것은 밖에서 생성해서 넣어주는 것이다. (AppConfig)
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     // 회원가입
     @Override
