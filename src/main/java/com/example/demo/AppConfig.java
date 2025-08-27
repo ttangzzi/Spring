@@ -7,6 +7,7 @@ import com.example.demo.member.MemoryMemberRepository;
 import com.example.demo.order.OrderService;
 import com.example.demo.order.OrderServiceImpl;
 
+// 이제 객체의 생성과 연결은 AppConfig가 담당한다.
 public class AppConfig {
     public MemberService memberService() {
         // 생성자를 통해서 MemoryMemberRepository 구현체를 선택한다.

@@ -7,8 +7,8 @@ import com.example.demo.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        // MemberService의 구현체 MemberServiceImpl (단일 구현체)
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
 
         // 새로운 회원정보를 임의로 만든 것
         Member member = new Member(1L, "memberA", Grade.VIP);

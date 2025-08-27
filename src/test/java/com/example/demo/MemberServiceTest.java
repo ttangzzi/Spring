@@ -5,10 +5,19 @@ import com.example.demo.member.Member;
 import com.example.demo.member.MemberService;
 import com.example.demo.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+
+    // 테스트 실행 전 무조건 실행되는 것
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
+
     @Test
     void join() {
         // given : 이런 환경이 주어졌을 때
