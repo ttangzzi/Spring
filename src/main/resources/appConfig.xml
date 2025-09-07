@@ -3,11 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--MemberService 관련-->
     <bean id="memberService" class="com.hello.core.member.MemberServiceImpl">
         <constructor-arg name="memberRepository" ref="memberRepository" />
     </bean>
     <bean id="memberRepository" class="com.hello.core.member.MemoryMemberRepository" />
 
+    <!-- OrderService 관련 -->
     <bean id="orderService" class="com.hello.core.order.OrderServiceImpl">
         <constructor-arg name="memberRepository" ref="memberRepository" />
         <constructor-arg name="discountPolicy" ref="discountPolicy" />

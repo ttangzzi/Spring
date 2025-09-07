@@ -26,4 +26,9 @@ public class MemberServiceImpl implements MemberService{
         // MemoryMemberRepository에 있는 findById가 호출됨
         return memberRepository.findById(memberId);
     }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
