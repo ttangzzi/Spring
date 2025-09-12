@@ -5,10 +5,11 @@ import com.hello.core.member.Member;
 import com.hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // RequiredArgs = final(즉, 필수값)이 붙은 arguments라는 뜻
+// @RequiredArgsConstructor // RequiredArgs = final(즉, 필수값)이 붙은 arguments라는 뜻
 public class OrderServiceImpl implements OrderService {
 
     // MemoryMemberRepository를 제거 후 생성자를 만든다.
@@ -20,6 +21,12 @@ public class OrderServiceImpl implements OrderService {
     // 구체적인 것은 밖에서 생성해서 넣어주는 것이다. (AppConfig)
 
     // @Autowired -> 생성자가 단 한개만 있다면 @Autowired 생략 가능 !
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
 
     // lombok 라이브러리는 자동으로 final 붙은 필드를 모아 자동으로 생성자를 만들어준다.
 //    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
